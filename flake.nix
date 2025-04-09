@@ -92,7 +92,7 @@
           pkgs.go
           pkgs.nixd
           pkgs.tmux
-          pkgs.awscli
+          pkgs.awscli2
           pkgs.hello
           pkgs.lazygit
           pkgs.gh
@@ -101,6 +101,7 @@
           pkgs.zoxide
           pkgs.fzf
           pkgs.direnv
+          pkgs.bun
         ];
 
         homebrew = {
@@ -118,6 +119,7 @@
             "linear-linear"
             "superhuman"
             "tailscale"
+            "postman"
             "notion"
             "notion-calendar"
             "figma"
