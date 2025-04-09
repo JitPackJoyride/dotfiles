@@ -78,5 +78,5 @@
       };
     }
   ];
-  programs.zed-editor.extensions = [ "nix" "nvim-nightfox" "html" ];
+  programs.zed-editor.extensions = [ "nix" "nvim-nightfox" "html" "git-firefly" ];
 }
