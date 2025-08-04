@@ -4,22 +4,29 @@
     base_keymap = "VSCode";
     vim_mode = true;
     relative_line_numbers = true;
-    assistant = {
-      version = "2";
-      default_model = {
-        provider = "zed.dev";
-        model = "claude-3-5-sonnet-latest";
-      };
-      dock = "left";
-    };
     language_models = {
       zed = {
         provider = "zed.dev";
-        model = "claude-3-5-sonnet-latest";
+        model = "claude-sonnet-4-thinking-latest";
         version = "2";
       };
     };
-    theme = "Carbonfox";
+    agent = {
+      version = "2";
+      default_model = {
+        model = "claude-sonnet-4-thinking-latest";
+        provider = "zed.dev";
+      };
+      dock = "left";
+      inline_assistant_model = {
+        model = "claude-sonnet-4-thinking-latest";
+        provider = "zed.dev";
+      };
+    };
+    edit_predictions = {
+      mode = "subtle";
+    };
+    theme = "Carbonfox - opaque";
     ui_font_size = 18;
     buffer_font_size = 18;
     project_panel = {
@@ -37,9 +44,6 @@
         "prettier-plugin-tailwindcss"
       ];
     };
-    features = {
-      inline_completion_provider = "supermaven";
-    };
     languages = {
       YAML = {
         formatter = "language_server";
@@ -47,6 +51,19 @@
       JavaScript = {
         code_actions_on_format = {
           "source.fixAll.eslint" = true;
+        };
+      };
+    };
+    lsp = {
+      pyright = {
+        settings = {
+          python = {
+            analysis = {
+              diagnosticMode = "workspace";
+              typeCheckingMode = "strict";
+            };
+            pythonPath = "/Users/ajit/code/platform/workflows/.venv/bin/python";
+          };
         };
       };
     };
@@ -78,5 +95,5 @@
       };
     }
   ];
-  programs.zed-editor.extensions = [ "nix" "nvim-nightfox" "html" "git-firefly" ];
+  programs.zed-editor.extensions = [ "nix" "nvim-nightfox" "html" "git-firefly" "toml" ];
 }

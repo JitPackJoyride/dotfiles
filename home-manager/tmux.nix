@@ -77,7 +77,7 @@
       set -g status-left-length 10
 
       set -g status-right-style 'fg=black bg=blue'
-      set -g status-right 'NY:#(TZ="America/New_York" date +"%%b-%%d %%H:%%M")|LD:#(TZ="Europe/London" date +"%%b-%%d %%H:%%M")|HK:#(TZ="Asia/Hong_Kong" date +"%%b-%%d %%H:%%M")'
+      set -g status-right 'NY:#(TZ="America/New_York" date +"%%b-%%d %%H:%%M")|HK:#(TZ="Asia/Hong_Kong" date +"%%b-%%d %%H:%%M")'
       set -g status-right-length 100
 
       setw -g window-status-current-style 'fg=black bg=red'

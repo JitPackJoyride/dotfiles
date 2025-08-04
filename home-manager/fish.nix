@@ -7,6 +7,7 @@
       set fish_greeting
       source ~/.orbstack/shell/init2.fish 2>/dev/null || :
       set -gx EDITOR vim
+      fish_vi_key_bindings
     '';
     shellAliases = {
       lg = "lazygit";
@@ -54,6 +55,9 @@
       '';
       gs = ''
         git status $argv
+      '';
+      ni = ''
+        npm ci --ignore-scripts
       '';
     };
   };

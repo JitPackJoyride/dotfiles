@@ -102,6 +102,7 @@
           pkgs.fzf
           pkgs.direnv
           pkgs.bun
+          pkgs.bat
         ];
 
         homebrew = {
@@ -128,6 +129,11 @@
             "cleanshot"
             "rectangle"
             "visual-studio-code"
+            "google-chrome"
+          ];
+          brews = [
+            "libmagic"
+            "weasyprint"
           ];
         };
         # Necessary for using flakes on this system.
