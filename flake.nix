@@ -103,6 +103,9 @@
           pkgs.direnv
           pkgs.bun
           pkgs.bat
+          pkgs.jujutsu
+          pkgs.lazyjj
+          pkgs.nodejs_22
         ];
 
         homebrew = {
@@ -130,6 +133,7 @@
             "rectangle"
             "visual-studio-code"
             "google-chrome"
+            "fathom"
           ];
           brews = [
             "libmagic"

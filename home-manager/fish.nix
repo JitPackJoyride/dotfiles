@@ -59,6 +59,18 @@
       ni = ''
         npm ci --ignore-scripts
       '';
+      aas = ''
+        ant-all-services
+      '';
+      nd = ''
+        nix develop -c "/run/current-system/sw/bin/fish"
+      '';
+      npmd = ''
+        ant-npm-build-deptree && npm ci && npm run dev
+      '';
+      uvi = ''
+        uv venv && source .venv/bin/activate.fish && uv sync
+      '';
     };
   };
 }

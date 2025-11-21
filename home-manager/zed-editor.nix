@@ -4,15 +4,7 @@
     base_keymap = "VSCode";
     vim_mode = true;
     relative_line_numbers = true;
-    language_models = {
-      zed = {
-        provider = "zed.dev";
-        model = "claude-sonnet-4-thinking-latest";
-        version = "2";
-      };
-    };
     agent = {
-      version = "2";
       default_model = {
         model = "claude-sonnet-4-thinking-latest";
         provider = "zed.dev";
@@ -95,5 +87,5 @@
       };
     }
   ];
-  programs.zed-editor.extensions = [ "nix" "nvim-nightfox" "html" "git-firefly" "toml" ];
+  programs.zed-editor.extensions = [ "nix" "nvim-nightfox" "html" "git-firefly" "toml" "csv" ];
 }
