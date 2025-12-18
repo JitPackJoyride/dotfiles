@@ -83,6 +83,8 @@
         home-manager.useUserPackages = true;
         home-manager.useGlobalPkgs = true;
 
+        system.primaryUser = "ajit";
+
         nixpkgs.config.allowUnfree = true;
 
         # List packages installed in system profile. To search by name, run:

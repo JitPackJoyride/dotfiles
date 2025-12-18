@@ -6,12 +6,12 @@
     relative_line_numbers = true;
     agent = {
       default_model = {
-        model = "claude-sonnet-4-thinking-latest";
+        model = "claude-sonnet-4-thinking";
         provider = "zed.dev";
       };
       dock = "left";
       inline_assistant_model = {
-        model = "claude-sonnet-4-thinking-latest";
+        model = "claude-sonnet-4-thinking";
         provider = "zed.dev";
       };
     };
