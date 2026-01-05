@@ -2,11 +2,11 @@
   description = "Ajit's nix-darwin system flake";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixpkgs-unstable";
-    nix-darwin.url = "github:LnL7/nix-darwin/master";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
+    nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     platform.url = "/Users/ajit/code/platform";
-    home-manager.url = "home-manager";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     homebrew-core = {
       url = "github:homebrew/homebrew-core";
@@ -39,10 +39,9 @@
           self.darwinModules.system
         ];
       };
-      simple = nix-darwin.lib.darwinSystem {
+      simple = inputs.platform.darwinConfigurations.ajit.extendModules {
         modules = [
           home-manager.darwinModules.home-manager
-          inputs.platform.darwinModules.anterior-fancy
           nix-homebrew.darwinModules.nix-homebrew
           self.darwinModules.homebrew
           self.darwinModules.simple
@@ -68,8 +67,6 @@
       };
 
       system = { ... }: {
-        # Set Git commit hash for darwin-version.
-       	system.configurationRevision = self.rev or self.dirtyRev or null;
        	# Used for backwards compatibility, please read the changelog before changing.
        	# $ darwin-rebuild changelog
        	system.stateVersion = 6;
@@ -82,8 +79,6 @@
         home-manager.users.ajit-work = self.homeModules.anterior;
         home-manager.useUserPackages = true;
         home-manager.useGlobalPkgs = true;
-
-        system.primaryUser = "ajit";
 
         nixpkgs.config.allowUnfree = true;
 
@@ -161,19 +156,6 @@
           pkgs.nerd-fonts.fira-code
         ];
 
-        users.knownUsers = [ "ajit" "ajit-work" ];
-        users.users.ajit = {
-          name = "ajit";
-          home = "/Users/ajit";
-          uid = 502;
-          shell = pkgs.fish;
-        };
-        users.users.ajit-work = {
-          name = "ajit-work";
-          home = "/Users/ajit-work";
-          uid = 501;
-          shell = pkgs.fish;
-        };
         programs.fish.enable = true;
         programs.fish.vendor.config.enable = true;
         programs.fish.vendor.completions.enable = true;
@@ -194,7 +176,6 @@
         ./home-manager/tmux.nix
         ./home-manager/vim.nix
       ];
-      home.stateVersion = "24.11";
     });
   };
 }
