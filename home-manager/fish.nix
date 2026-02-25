@@ -8,11 +8,13 @@
       source ~/.orbstack/shell/init2.fish 2>/dev/null || :
       set -gx EDITOR vim
       fish_vi_key_bindings
+      /run/current-system/sw/bin/mise activate fish | source
     '';
     shellAliases = {
       lg = "lazygit";
       y = "yazi";
       j = "z";
+      mi = "mise run";
     };
     functions = {
       nix-darwin-rebuild = ''
@@ -58,15 +60,6 @@
       '';
       ni = ''
         npm ci --ignore-scripts
-      '';
-      aas = ''
-        ant-all-services
-      '';
-      nd = ''
-        nix develop -c "/run/current-system/sw/bin/fish"
-      '';
-      npmd = ''
-        ant-npm-build-deptree && npm ci && npm run dev
       '';
       uvi = ''
         uv venv && source .venv/bin/activate.fish && uv sync

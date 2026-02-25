@@ -85,7 +85,7 @@
           pkgs.zoxide
           pkgs.fzf
           pkgs.bat
-          pkgs.jujutsu
+          pkgs.mise
           pkgs.raycast
           pkgs._1password-gui
           pkgs._1password-cli
@@ -105,7 +105,6 @@
             "notion-calendar"
             "figma"
             "cleanshot"
-            "paste"
           ];
         };
 
