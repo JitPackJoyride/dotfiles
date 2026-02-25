@@ -85,6 +85,7 @@
           pkgs.zoxide
           pkgs.fzf
           pkgs.bat
+          pkgs.ngrok
           pkgs.mise
           pkgs.raycast
           pkgs._1password-gui
