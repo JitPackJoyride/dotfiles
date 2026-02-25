@@ -142,6 +142,11 @@
         system.defaults.CustomUserPreferences = {
           "com.apple.symbolichotkeys" = {
             AppleSymbolicHotKeys = {
+              "28" = { enabled = false; };  # Screenshot area to file (Cmd+Shift+3)
+              "29" = { enabled = false; };  # Screenshot area to clipboard (Ctrl+Cmd+Shift+3)
+              "30" = { enabled = false; };  # Screenshot selection to file (Cmd+Shift+4)
+              "31" = { enabled = false; };  # Screenshot selection to clipboard (Ctrl+Cmd+Shift+4)
+              "184" = { enabled = false; }; # Screenshot/recording options (Cmd+Shift+5)
               "64" = { enabled = false; };  # Spotlight search
               "65" = { enabled = false; };  # Finder search window
             };
