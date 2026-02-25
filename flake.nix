@@ -5,7 +5,6 @@
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
-    platform.url = "/Users/ajit/code/platform";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
     nix-homebrew.url = "github:zhaofengli-wip/nix-homebrew";
     homebrew-core = {
@@ -29,22 +28,12 @@
   }:
   {
     darwinConfigurations = {
-      anterior-bootstrap = nix-darwin.lib.darwinSystem {
-        modules = [
-          home-manager.darwinModules.home-manager
-          inputs.platform.darwinModules.anterior-core
-          nix-homebrew.darwinModules.nix-homebrew
-          self.darwinModules.homebrew
-          self.darwinModules.simple
-          self.darwinModules.system
-        ];
-      };
-      simple = inputs.platform.darwinConfigurations.ajit.extendModules {
+      main = nix-darwin.lib.darwinSystem {
         modules = [
           home-manager.darwinModules.home-manager
           nix-homebrew.darwinModules.nix-homebrew
           self.darwinModules.homebrew
-          self.darwinModules.simple
+          self.darwinModules.main
           self.darwinModules.system
         ];
       };
@@ -74,82 +63,129 @@
        	nixpkgs.hostPlatform = "aarch64-darwin";
       };
 
-      simple = { pkgs, ... }: {
-        home-manager.users.ajit = self.homeModules.anterior;
-        home-manager.users.ajit-work = self.homeModules.anterior;
+      main = { pkgs, ... }: {
+        # Set Git commit hash for darwin-version.
+       	system.configurationRevision = self.rev or self.dirtyRev or null;
+
+        home-manager.users.ajit = self.homeModules.main;
         home-manager.useUserPackages = true;
         home-manager.useGlobalPkgs = true;
-
-        nixpkgs.config.allowUnfree = true;
 
         # List packages installed in system profile. To search by name, run:
         # $ nix-env -qaP | grep wget
         environment.systemPackages = [
           pkgs.vim
-          pkgs.go
           pkgs.nixd
           pkgs.tmux
           pkgs.awscli2
-          pkgs.hello
           pkgs.lazygit
           pkgs.gh
           pkgs.starship
           pkgs.yazi
           pkgs.zoxide
           pkgs.fzf
-          pkgs.direnv
-          pkgs.bun
           pkgs.bat
           pkgs.jujutsu
-          pkgs.lazyjj
-          pkgs.nodejs_22
+          pkgs.raycast
+          pkgs._1password-gui
+          pkgs._1password-cli
+          pkgs.slack
+          pkgs.orbstack
+          pkgs.notion-app
+          pkgs.rectangle
         ];
 
         homebrew = {
           enable = true;
           casks = [
-            "raycast"
             "arc"
-            "zed"
-            "1password"
-            "1password-cli"
-            "slack"
             "ghostty"
-            "claude"
-            "orbstack"
             "linear-linear"
             "superhuman"
-            "tailscale"
-            "postman"
-            "notion"
             "notion-calendar"
             "figma"
-            "nordvpn"
-            "logi-options+"
             "cleanshot"
-            "rectangle"
-            "visual-studio-code"
-            "google-chrome"
-            "fathom"
-          ];
-          brews = [
-            "libmagic"
-            "weasyprint"
+            "paste"
           ];
         };
-        # Necessary for using flakes on this system.
-        nix.settings.experimental-features = "nix-command flakes";
 
-        # Don't rearrange spaces based on the most recent use
-        system.defaults.dock.mru-spaces = false;
-        system.defaults.dock.autohide = true;
+        nix = {
+          package = pkgs.nix;
+          gc.automatic = true;
+          optimise.automatic = true;
+          settings = {
+            # Necessary for using flakes on this system.
+            experimental-features = [ "nix-command" "flakes" ];
+          };
+        };
+        nixpkgs.config.allowUnfree = true;
+
 
         security.pam.services.sudo_local.touchIdAuth = true;
+        security.pam.services.sudo_local.watchIdAuth = true;
 
+        users.knownUsers = [ "ajit" ];
+        users.users.ajit = {
+          name = "ajit";
+          home = "/Users/ajit";
+          uid = 501;
+          shell = pkgs.fish;
+        };
+        system.primaryUser = "ajit";
+
+        # Keyboard
         system.keyboard = {
           enableKeyMapping = true;
           remapCapsLockToControl = true;
         };
+        system.defaults.NSGlobalDomain.ApplePressAndHoldEnabled = false;
+        system.defaults.NSGlobalDomain.NSAutomaticCapitalizationEnabled = false;
+        system.defaults.CustomUserPreferences = {
+          "com.apple.symbolichotkeys" = {
+            AppleSymbolicHotKeys = {
+              "64" = { enabled = false; };  # Spotlight search
+              "65" = { enabled = false; };  # Finder search window
+            };
+          };
+        };
+
+        # Default web browser
+        system.defaults.CustomUserPreferences = {
+          "com.apple.LaunchServices/com.apple.launchservices.secure" = {
+            LSHandlers = [
+              {
+                LSHandlerRoleAll = "company.thebrowser.browser";
+                LSHandlerURLScheme = "http";
+              }
+              {
+                LSHandlerRoleAll = "company.thebrowser.browser";
+                LSHandlerURLScheme = "https";
+              }
+            ];
+          };
+        };
+
+        # Dock
+        system.defaults.dock.persistent-apps = [
+          "/Applications/Arc.app"
+          "/Applications/Ghostty.app"
+          "/Applications/Nix Apps/Slack.app"
+          "/Users/ajit/Applications/Home Manager Apps/Zed.app"
+          "/System/Applications/Music.app"
+          "/Applications/Nix Apps/Notion.app"
+          "/Applications/Notion Calendar.app"
+          "/Applications/Superhuman.app"
+          "/Applications/Linear.app"
+          "/Applications/Circleback.app"
+        ];
+        system.defaults.dock.show-recents = false;
+        # Don't rearrange spaces based on the most recent use
+        system.defaults.dock.mru-spaces = false;
+        system.defaults.dock.autohide = true;
+
+        # Appearance
+        system.defaults.NSGlobalDomain.AppleInterfaceStyle = "Dark";
+        system.defaults.NSGlobalDomain.AppleInterfaceStyleSwitchesAutomatically = false;
 
         fonts.packages = [
           pkgs.nerd-fonts.jetbrains-mono
@@ -162,7 +198,7 @@
         programs.fish.vendor.functions.enable = true;
       };
     };
-    homeModules.anterior = ({ ... }:{
+    homeModules.main = ({ ... }:{
       imports = [
         ./home-manager/fish.nix
         ./home-manager/git.nix
@@ -176,6 +212,7 @@
         ./home-manager/tmux.nix
         ./home-manager/vim.nix
       ];
+      home.stateVersion = "25.11";
     });
   };
 }

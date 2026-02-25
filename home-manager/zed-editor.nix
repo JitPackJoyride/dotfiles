@@ -3,15 +3,15 @@
   programs.zed-editor.userSettings = {
     base_keymap = "VSCode";
     vim_mode = true;
-    relative_line_numbers = true;
+    relative_line_numbers = "enabled";
     agent = {
       default_model = {
-        model = "claude-sonnet-4-thinking";
+        model = "claude-opus-4-6-thinking";
         provider = "zed.dev";
       };
       dock = "left";
       inline_assistant_model = {
-        model = "claude-sonnet-4-thinking";
+        model = "claude-opus-4-6-thinking";
         provider = "zed.dev";
       };
     };
@@ -19,8 +19,7 @@
       mode = "subtle";
     };
     theme = "Carbonfox - opaque";
-    ui_font_size = 18;
-    buffer_font_size = 18;
+    buffer_font_size = 16;
     project_panel = {
       dock = "right";
       indent_size = 10;
@@ -43,19 +42,6 @@
       JavaScript = {
         code_actions_on_format = {
           "source.fixAll.eslint" = true;
-        };
-      };
-    };
-    lsp = {
-      pyright = {
-        settings = {
-          python = {
-            analysis = {
-              diagnosticMode = "workspace";
-              typeCheckingMode = "strict";
-            };
-            pythonPath = "/Users/ajit/code/platform/workflows/.venv/bin/python";
-          };
         };
       };
     };
