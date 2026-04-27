@@ -1,5 +1,6 @@
-{
+{ pkgs, ... }: {
   programs.zed-editor.enable = true;
+  programs.zed-editor.package = pkgs.unstable.zed-editor;
   programs.zed-editor.userSettings = {
     base_keymap = "VSCode";
     vim_mode = true;
@@ -73,5 +74,5 @@
       };
     }
   ];
-  programs.zed-editor.extensions = [ "nix" "nvim-nightfox" "html" "git-firefly" "toml" "csv" ];
+  programs.zed-editor.extensions = [ "nix" "nvim-nightfox" "html" "git-firefly" "toml" "csv" "xml" ];
 }

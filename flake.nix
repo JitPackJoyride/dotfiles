@@ -3,6 +3,7 @@
 
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-25.11-darwin";
+    nixpkgs-unstable.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nix-darwin.url = "github:nix-darwin/nix-darwin/nix-darwin-25.11";
     nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
     home-manager.url = "github:nix-community/home-manager/release-25.11";
@@ -64,6 +65,14 @@
       };
 
       main = { pkgs, ... }: {
+        nixpkgs.overlays = [
+          (final: prev: {
+            unstable = import inputs.nixpkgs-unstable {
+              system = "aarch64-darwin";
+              config.allowUnfree = true;
+            };
+          })
+        ];
         # Set Git commit hash for darwin-version.
        	system.configurationRevision = self.rev or self.dirtyRev or null;
 
@@ -86,6 +95,9 @@
           pkgs.fzf
           pkgs.bat
           pkgs.ngrok
+          pkgs.graphite-cli
+          pkgs.ripgrep
+          pkgs.gum
           pkgs.mise
           pkgs.raycast
           pkgs._1password-gui
@@ -94,6 +106,9 @@
           pkgs.orbstack
           pkgs.notion-app
           pkgs.rectangle
+          pkgs.yaak
+          pkgs.claude-code
+          pkgs.redis
         ];
 
         homebrew = {
@@ -106,6 +121,7 @@
             "notion-calendar"
             "figma"
             "cleanshot"
+            "zoom"
           ];
         };
 
