@@ -71,6 +71,10 @@
               system = "aarch64-darwin";
               config.allowUnfree = true;
             };
+            # Hack for direnv update that has failing tests
+            direnv = prev.direnv.overrideAttrs (old: {
+              doCheck = false;
+            });
           })
         ];
         # Set Git commit hash for darwin-version.

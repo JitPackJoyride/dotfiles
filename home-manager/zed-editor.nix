@@ -7,12 +7,12 @@
     relative_line_numbers = "enabled";
     agent = {
       default_model = {
-        model = "claude-opus-4-6-thinking";
+        model = "claude-opus-4-7-thinking";
         provider = "zed.dev";
       };
       dock = "left";
       inline_assistant_model = {
-        model = "claude-opus-4-6-thinking";
+        model = "claude-opus-4-7-thinking";
         provider = "zed.dev";
       };
     };
