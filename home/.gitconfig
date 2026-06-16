@@ -1,0 +1,10 @@
+[user]
+	email = ajit@sonder.fyi
+	name = JitPackJoyride
+[init]
+	defaultBranch = main
+[pull]
+	rebase = true
+[rerere]
+	enabled = true
+	autoUpdate = true

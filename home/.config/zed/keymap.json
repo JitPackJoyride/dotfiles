@@ -1,0 +1,27 @@
+[
+  {
+    "context": "Workspace",
+    "bindings": {
+      "shift-shift": "file_finder::Toggle",
+      "cmd-shift-x": "project_panel::Rename",
+      "cmd-ctrl-x": "zed::Extensions",
+      "cmd-b": "workspace::ToggleRightDock",
+      "cmd-r": "workspace::ToggleLeftDock"
+    }
+  },
+  {
+    "context": "ProjectPanel",
+    "bindings": {
+      "shift-r": null,
+      "f2": null,
+      "cmd-shift-x": "project_panel::Rename"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "cmd-shift-x": "editor::Rename",
+      "ctrl-c": "editor::ShowCompletions"
+    }
+  }
+]

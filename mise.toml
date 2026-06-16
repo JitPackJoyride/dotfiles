@@ -1,0 +1,96 @@
+[settings]
+experimental = true # bootstrap + dotfiles are experimental
+lockfile = true
+dotfiles.root = "~/.dotfiles"
+dotfiles.default_mode = "symlink"
+
+[tools]
+# runtimes
+go = "latest"
+node = "26"
+python = "3.14"
+java = "lts"
+deno = "latest"
+rust = "stable"
+zig = "latest"
+gleam = "latest"
+# dev clis
+gh = "latest"
+lazygit = "latest"
+jq = "latest"
+ripgrep = "latest"
+bat = "latest"
+fzf = "latest"
+zoxide = "latest"
+yazi = "latest"
+starship = "latest"
+pnpm = "latest"
+usage = "latest"
+awscli = "latest"
+uv = "latest"          # used by the uvi fish function
+claude-code = "latest" # aqua:anthropics/claude-code standalone
+
+[shell_alias]
+lg = "lazygit"
+j = "z"
+mi = "mise run"
+
+[bootstrap.packages]
+# brew formulae (not in mise registry / build deps)
+"brew:ffmpeg" = "latest"
+"brew:tesseract" = "latest"
+"brew:git" = "latest"
+"brew:wget" = "latest"
+"brew:tree" = "latest"
+"brew:fish" = "latest" # login shell
+"brew:resvg" = "latest" # native arm64 svg renderer
+
+# gui apps — installed by hand; left unmanaged so brew won't make duplicate app versions
+# "brew-cask:ghostty" = "latest"
+# "brew-cask:arc" = "latest"
+# "brew-cask:orbstack" = "latest"
+# "brew-cask:1password" = "latest"
+# "brew-cask:1password-cli" = "latest"
+# "brew-cask:raycast" = "latest"
+# "brew-cask:linear-linear" = "latest"
+# "brew-cask:slack" = "latest"
+# "brew-cask:superhuman" = "latest"
+# "brew-cask:notion" = "latest"
+# "brew-cask:notion-calendar" = "latest"
+# "brew-cask:figma" = "latest"
+# "brew-cask:cleanshot" = "latest"
+# "brew-cask:zoom" = "latest"
+# "brew-cask:rectangle" = "latest"
+# "brew-cask:yaak" = "latest"
+
+# fonts — mise's bundled brew can't install font casks (unsupported artifact),
+# so install them through real homebrew once packages are done
+[bootstrap.hooks.post-packages]
+run = "brew install --cask font-fira-code-nerd-font font-jetbrains-mono-nerd-font font-monaspace"
+
+[dotfiles]
+"~/.gitconfig" = "home/.gitconfig"
+"~/.config/git/ignore" = "home/.config/git/ignore"
+"~/.config/gh/config.yml" = "home/.config/gh/config.yml"
+"~/.config/starship.toml" = "home/.config/starship.toml"
+"~/.config/ghostty/config" = "home/.config/ghostty/config"
+"~/.vimrc" = "home/.vimrc"
+"~/.config/tmux/tmux.conf" = "home/.config/tmux/tmux.conf"
+"~/.config/zed/settings.json" = "home/.config/zed/settings.json"
+"~/.config/zed/keymap.json" = "home/.config/zed/keymap.json"
+"~/.config/fish/config.fish" = "home/.config/fish/config.fish"
+"~/.config/fish/functions" = { source = "home/.config/fish/functions", mode = "symlink-each" }
+
+[bootstrap.macos.dock]
+autohide = true
+show_recents = false
+
+[bootstrap.macos.keyboard]
+press_and_hold = false # hold-key → key repeat, not accent popup
+
+[bootstrap.macos.defaults]
+"com.apple.dock" = { "mru-spaces" = false } # don't reorder spaces by recent use
+"NSGlobalDomain" = { AppleInterfaceStyle = "Dark", AppleInterfaceStyleSwitchesAutomatically = false, NSAutomaticCapitalizationEnabled = false }
+
+[bootstrap.user]
+login_shell = "/opt/homebrew/bin/fish" # already your shell
