@@ -1,0 +1,22 @@
+command_timeout = 1000
+
+[battery]
+full_symbol = "🔋 "
+charging_symbol = "⚡️ "
+discharging_symbol = "💀 "
+
+[[battery.display]]  # "bold red" style and discharging_symbol when capacity is between 0% and 10%
+threshold = 10
+style = "bold red"
+
+[[battery.display]]  # "bold yellow" style andsymbol when capacity is between 10% and 30%
+threshold = 30
+style = "bold yellow"
+
+[gcloud]
+disabled = true
+
+[aws]
+format = 'on [$symbol($profile )(\($region\) )]($style)'
+symbol = "🅰 "
+disabled = true
