@@ -1,6 +1,7 @@
 [user]
 	email = ajit@sonder.fyi
 	name = JitPackJoyride
+	signingkey = ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIEocNuMnUZfuDKrwnvJq91PLjvVCv756maYbpMcg8lPV
 [init]
 	defaultBranch = main
 [pull]
@@ -8,3 +9,9 @@
 [rerere]
 	enabled = true
 	autoUpdate = true
+[gpg]
+	format = ssh
+[gpg "ssh"]
+	program = /Applications/1Password.app/Contents/MacOS/op-ssh-sign
+[commit]
+	gpgsign = true

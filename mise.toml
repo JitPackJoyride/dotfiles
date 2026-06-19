@@ -29,6 +29,7 @@ usage = "latest"
 awscli = "latest"
 uv = "latest"          # used by the uvi fish function
 claude-code = "latest" # aqua:anthropics/claude-code standalone
+codex = "latest"
 
 [shell_alias]
 lg = "lazygit"
