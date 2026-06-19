@@ -2,6 +2,8 @@
   "agentPushNotifEnabled": true,
   "model": "opus",
   "effortLevel": "xhigh",
+  "showThinkingSummaries": true,
+  "viewMode": "verbose",
   "permissions": {
     "defaultMode": "auto"
   }
