@@ -1,0 +1,8 @@
+{
+  "agentPushNotifEnabled": true,
+  "model": "opus",
+  "effortLevel": "xhigh",
+  "permissions": {
+    "defaultMode": "auto"
+  }
+}
