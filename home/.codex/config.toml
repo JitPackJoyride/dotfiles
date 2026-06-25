@@ -2,14 +2,15 @@
 notify = ["/Users/ajitkrishna/.codex/computer-use/Codex Computer Use.app/Contents/SharedSupport/SkyComputerUseClient.app/Contents/MacOS/SkyComputerUseClient", "turn-ended"]
 model = "gpt-5.5"
 model_reasoning_effort = "xhigh"
+service_tier = "priority"
 
 [marketplaces.openai-bundled]
-last_updated = "2026-06-19T22:26:29Z"
+last_updated = "2026-06-21T20:59:02Z"
 source_type = "local"
 source = "/Users/ajitkrishna/.codex/.tmp/bundled-marketplaces/openai-bundled"
 
 [marketplaces.openai-primary-runtime]
-last_updated = "2026-06-19T21:07:40Z"
+last_updated = "2026-06-24T06:07:40Z"
 source_type = "local"
 source = "/Users/ajitkrishna/.cache/codex-runtimes/codex-primary-runtime/plugins/openai-primary-runtime"
 
@@ -37,6 +38,9 @@ enabled = true
 [plugins."pdf@openai-primary-runtime"]
 enabled = true
 
+[plugins."template-creator@openai-primary-runtime"]
+enabled = true
+
 [projects."/Users/ajitkrishna/Library/com.pieces.os"]
 trust_level = "trusted"
 
@@ -56,6 +60,8 @@ preventSleepWhileRunning = true
 keepRemoteControlAwakeWhilePluggedIn = true
 git-always-force-push = false
 conversationDetailMode = "STEPS_COMMANDS"
+appearanceTheme = "system"
+dock-icon-preference = "codex-dark"
 
 [desktop.open-in-target-preferences]
 global = "zed"
@@ -74,12 +80,12 @@ NODE_REPL_NODE_MODULE_DIRS = "/Applications/Codex.app/Contents/Resources/cua_nod
 NODE_REPL_NODE_PATH = "/Applications/Codex.app/Contents/Resources/cua_node/bin/node"
 NODE_REPL_TRUSTED_CODE_PATHS = "/Users/ajitkrishna/.codex"
 CODEX_HOME = "/Users/ajitkrishna/.codex"
-NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "feca4d852d7d18eab5e217b18c8c80099fe667c330e836640fd7a48f362de525"
+NODE_REPL_TRUSTED_BROWSER_CLIENT_SHA256S = "4cfaeb70b54d114e1cd56bc0f85d04e1b344a5049cddb729e2b1161b9ff3008a"
 BROWSER_USE_AVAILABLE_BACKENDS = "chrome,iab"
 NODE_REPL_INSTRUCTIONS_USE_CASE_BROWSER = "Control the in-app browser in conjunction with the Browser Plugin."
 NODE_REPL_INSTRUCTIONS_USE_CASE_CHROME = "Control the Chrome browser in conjunction with the Chrome Plugin. Prefer this method of controlling Chrome over alternatives (such as Computer Use) unless the user explicitly mentions an alternative."
 BROWSER_USE_CODEX_APP_BUILD_FLAVOR = "prod"
-BROWSER_USE_CODEX_APP_VERSION = "26.616.32156"
+BROWSER_USE_CODEX_APP_VERSION = "26.616.41845"
 CODEX_CLI_PATH = "/Applications/Codex.app/Contents/Resources/codex"
 
 [tui.model_availability_nux]

@@ -9,7 +9,15 @@
   },
   "agent_servers": {
     "codex-acp": {
-      "type": "registry",
+      "default_config_options": {
+        "reasoning_effort": "xhigh"
+      },
+      "type": "custom",
+      "command": "npx",
+      "args": ["-y", "@agentclientprotocol/codex-acp@latest"],
+      "env": {
+        "CODEX_PATH": "/Users/ajitkrishna/.local/bin/codex",
+      },
     },
     "claude-acp": {
       "default_config_options": {

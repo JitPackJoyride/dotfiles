@@ -1,10 +1,11 @@
 {
-  "agentPushNotifEnabled": true,
-  "model": "opus",
-  "effortLevel": "xhigh",
-  "showThinkingSummaries": true,
-  "viewMode": "verbose",
   "permissions": {
     "defaultMode": "auto"
-  }
+  },
+  "model": "opus",
+  "viewMode": "verbose",
+  "effortLevel": "xhigh",
+  "showThinkingSummaries": true,
+  "agentPushNotifEnabled": true,
+  "tui": "fullscreen"
 }
